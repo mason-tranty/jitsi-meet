@@ -8,6 +8,7 @@ import { Container } from '../../../base/react';
 import { connect } from '../../../base/redux';
 import { StyleType } from '../../../base/styles';
 import { ChatButton } from '../../../chat';
+import { AudioRouteButton } from '../../../mobile/audio-mode';
 import { isToolboxVisible } from '../../functions';
 import AudioMuteButton from '../AudioMuteButton';
 import HangupButton from '../HangupButton';
@@ -15,6 +16,7 @@ import VideoMuteButton from '../VideoMuteButton';
 
 import OverflowMenuButton from './OverflowMenuButton';
 import styles from './styles';
+import ToggleCameraButton from './ToggleCameraButton';
 
 /**
  * The type of {@link Toolbox}'s React {@code Component} props.
@@ -104,20 +106,22 @@ class Toolbox extends PureComponent<Props> {
                 accessibilityRole = 'toolbar'
                 pointerEvents = 'box-none'
                 style = { styles.toolbar }>
-                <AudioMuteButton
-                    styles = { buttonStylesBorderless }
-                    toggledStyles = { toggledButtonStyles } />
-                <VideoMuteButton
-                    styles = { buttonStylesBorderless }
-                    toggledStyles = { toggledButtonStyles } />
+                <AudioRouteButton />
                 <ChatButton
                     styles = { buttonStylesBorderless }
-                    toggledStyles = { this._getChatButtonToggledStyle(toggledButtonStyles) } />
-                <OverflowMenuButton
+                    toggledStyles = { this._getChatButtonToggledStyle(toggledButtonStyles) } />             
+                <AudioMuteButton
                     styles = { buttonStylesBorderless }
                     toggledStyles = { toggledButtonStyles } />
                 <HangupButton
                     styles = { hangupButtonStyles } />
+                <VideoMuteButton
+                    styles = { buttonStylesBorderless }
+                    toggledStyles = { toggledButtonStyles } />
+                {/* <OverflowMenuButton
+                    styles = { buttonStylesBorderless }
+                    toggledStyles = { toggledButtonStyles } /> */}
+                <ToggleCameraButton />
             </View>
         );
     }
